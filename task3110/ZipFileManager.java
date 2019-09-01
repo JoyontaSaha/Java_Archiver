@@ -98,7 +98,7 @@ public class ZipFileManager {
         }
 
         // Create a temporary file
-        Path tempZipFile = Files.createTempFile(null, null);
+        Path tempZipFile = Files.createTempFile(zipFile.getParent(), null, null);
 
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(tempZipFile))) {
             try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(zipFile))) {
@@ -180,7 +180,7 @@ public class ZipFileManager {
         if (!Files.isRegularFile(zipFile)) {
             throw new NoSuchZipFileException();
         }
-        Path tempZipFile = Files.createTempFile(null, null);
+        Path tempZipFile = Files.createTempFile(zipFile.getParent(), null, null);
 
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(tempZipFile))) {
             try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(zipFile))) {
